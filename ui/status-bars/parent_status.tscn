@@ -1,0 +1,173 @@
+[gd_scene load_steps=18 format=3 uid="uid://qsqtayf8u68l"]
+
+[ext_resource type="Texture2D" uid="uid://ijnvhua7pnvg" path="res://ui/status-bars/ui-sheets/hunger.png" id="1_ixeun"]
+[ext_resource type="Script" path="res://ui/status-bars/parent_status.gd" id="1_wlg7r"]
+[ext_resource type="Texture2D" uid="uid://4igjod2gb1wn" path="res://ui/status-bars/ui-sheets/energy.png" id="2_6oynl"]
+[ext_resource type="Texture2D" uid="uid://dkq3d2qb0t7qo" path="res://ui/status-bars/ui-sheets/stress.png" id="3_0bs7j"]
+[ext_resource type="Texture2D" uid="uid://c1ec88bb5qewk" path="res://ui/status-bars/ui-sheets/health.png" id="4_t0wwv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hejkx"]
+atlas = ExtResource("1_ixeun")
+region = Rect2(0, 21, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3badm"]
+atlas = ExtResource("1_ixeun")
+region = Rect2(0, 11, 32, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vwge"]
+atlas = ExtResource("1_ixeun")
+region = Rect2(8, 4, 23, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g562a"]
+atlas = ExtResource("2_6oynl")
+region = Rect2(0, 21, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhe8k"]
+atlas = ExtResource("2_6oynl")
+region = Rect2(0, 11, 32, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m62wg"]
+atlas = ExtResource("2_6oynl")
+region = Rect2(7, 4, 24, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo0sd"]
+atlas = ExtResource("3_0bs7j")
+region = Rect2(0, 21, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdq6v"]
+atlas = ExtResource("3_0bs7j")
+region = Rect2(0, 11, 32, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fyba"]
+atlas = ExtResource("3_0bs7j")
+region = Rect2(8, 4, 23, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ph17"]
+atlas = ExtResource("4_t0wwv")
+region = Rect2(0, 21, 32, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxpp2"]
+atlas = ExtResource("4_t0wwv")
+region = Rect2(0, 11, 32, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dbt6"]
+atlas = ExtResource("4_t0wwv")
+region = Rect2(8, 4, 23, 1)
+
+[node name="ParentStatus" type="Control"]
+custom_minimum_size = Vector2(1280, 128)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_wlg7r")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1023, 72)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 36
+alignment = 1
+
+[node name="Hunger" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Hunger"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -5.0
+offset_right = 16.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.01
+value = 100.0
+texture_under = SubResource("AtlasTexture_hejkx")
+texture_over = SubResource("AtlasTexture_3badm")
+texture_progress = SubResource("AtlasTexture_4vwge")
+texture_progress_offset = Vector2(8, 1)
+
+[node name="Energy" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Energy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -5.0
+offset_right = 16.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.01
+value = 100.0
+texture_under = SubResource("AtlasTexture_g562a")
+texture_over = SubResource("AtlasTexture_bhe8k")
+texture_progress = SubResource("AtlasTexture_m62wg")
+texture_progress_offset = Vector2(7, 1)
+
+[node name="Stress" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Stress"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -5.0
+offset_right = 16.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.01
+texture_under = SubResource("AtlasTexture_fo0sd")
+texture_over = SubResource("AtlasTexture_cdq6v")
+texture_progress = SubResource("AtlasTexture_4fyba")
+texture_progress_offset = Vector2(8, 1)
+
+[node name="Health" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/Health"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -5.0
+offset_right = 16.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.01
+value = 100.0
+texture_under = SubResource("AtlasTexture_2ph17")
+texture_over = SubResource("AtlasTexture_dxpp2")
+texture_progress = SubResource("AtlasTexture_6dbt6")
+texture_progress_offset = Vector2(8, 1)

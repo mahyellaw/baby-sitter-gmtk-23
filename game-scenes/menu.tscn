@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfjak7vn24dt3"]
+
+[ext_resource type="Script" path="res://game-scenes/menu.gd" id="1_0ktm7"]
+[ext_resource type="FontFile" uid="uid://boa8kkjrlk0hr" path="res://miscellaneous/Pixerif.ttf" id="1_f6tlc"]
+[ext_resource type="Texture2D" uid="uid://dohk3f3bs2gq" path="res://entities/parent/mom/mom-sheet.png" id="2_lfme6"]
+[ext_resource type="Texture2D" uid="uid://erjgm140hdbj" path="res://entities/parent/dad/dad-sheet.png" id="3_spmcv"]
+[ext_resource type="AudioStream" uid="uid://cg1sjotyo2f0e" path="res://miscellaneous/click.wav" id="5_cdllg"]
+[ext_resource type="Script" path="res://miscellaneous/click.gd" id="6_kxegw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdg5f"]
+atlas = ExtResource("2_lfme6")
+region = Rect2(64, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1i3n"]
+atlas = ExtResource("3_spmcv")
+region = Rect2(64, 0, 16, 48)
+
+[node name="Menu" type="Control"]
+custom_minimum_size = Vector2(160, 96)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ktm7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.533333, 0.329412, 0.952941, 1)
+
+[node name="MainCamera" type="Camera2D" parent="."]
+z_index = 8
+position = Vector2(80, 48)
+zoom = Vector2(8, 8)
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 7.0
+offset_right = 40.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_f6tlc")
+text = "Select a parent."
+
+[node name="Mom" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -24.0
+offset_right = 72.0
+offset_bottom = 32.0
+grow_vertical = 2
+icon = SubResource("AtlasTexture_xdg5f")
+icon_alignment = 1
+
+[node name="Dad" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -24.0
+offset_right = -48.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+icon = SubResource("AtlasTexture_u1i3n")
+icon_alignment = 1
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cdllg")
+volume_db = -8.0
+script = ExtResource("6_kxegw")
+
+[connection signal="pressed" from="Mom" to="." method="_on_mom_pressed"]
+[connection signal="pressed" from="Dad" to="." method="_on_dad_pressed"]

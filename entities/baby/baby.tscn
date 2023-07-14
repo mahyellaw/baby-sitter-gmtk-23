@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkpik184cdw41"]
+
+[ext_resource type="Script" path="res://entities/baby/baby.gd" id="1_s1hy1"]
+[ext_resource type="Texture2D" uid="uid://x0v3obkk0alf" path="res://entities/baby/baby-texture.png" id="1_uqnec"]
+[ext_resource type="Script" path="res://entities/baby/heldparent.gd" id="3_qg6nw"]
+[ext_resource type="Texture2D" uid="uid://erjgm140hdbj" path="res://entities/parent/dad/dad-sheet.png" id="4_e8gj3"]
+[ext_resource type="Texture2D" uid="uid://dohk3f3bs2gq" path="res://entities/parent/mom/mom-sheet.png" id="5_yairr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpiml"]
+radius = 8.0
+height = 42.0
+
+[node name="Baby" type="Area2D"]
+script = ExtResource("1_s1hy1")
+parent_sheets = Array[Texture]([ExtResource("5_yairr"), ExtResource("4_e8gj3")])
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_uqnec")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_dpiml")
+
+[node name="HeldParent" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, 4)
+texture = ExtResource("4_e8gj3")
+region_enabled = true
+region_rect = Rect2(0, 32, 32, 16)
+script = ExtResource("3_qg6nw")
+parent_sheets = Array[Texture]([ExtResource("4_e8gj3"), ExtResource("5_yairr")])
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

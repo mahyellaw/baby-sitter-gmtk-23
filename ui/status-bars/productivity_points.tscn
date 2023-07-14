@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://8q7w5nn7yoiv"]
+
+[ext_resource type="Texture2D" uid="uid://ctmquqfgsy208" path="res://ui/status-bars/ui-sheets/productivity.png" id="1_doja4"]
+[ext_resource type="Script" path="res://ui/status-bars/productivity_points.gd" id="1_v1y5w"]
+[ext_resource type="FontFile" uid="uid://boa8kkjrlk0hr" path="res://miscellaneous/Pixerif.ttf" id="2_nk2qp"]
+
+[node name="ProductivityPoints" type="Control"]
+custom_minimum_size = Vector2(32, 16)
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("1_v1y5w")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_right = 16.0
+offset_bottom = 10.0
+grow_vertical = 2
+texture = ExtResource("1_doja4")
+stretch_mode = 3
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_nk2qp")
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1

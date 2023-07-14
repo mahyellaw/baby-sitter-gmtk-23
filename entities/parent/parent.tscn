@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://mbcxaoay3brd"]
+
+[ext_resource type="Texture2D" uid="uid://erjgm140hdbj" path="res://entities/parent/dad/dad-sheet.png" id="1_hh1rt"]
+[ext_resource type="Script" path="res://entities/parent/parent.gd" id="1_myudm"]
+[ext_resource type="Texture2D" uid="uid://dohk3f3bs2gq" path="res://entities/parent/mom/mom-sheet.png" id="2_tdmw3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vavoc"]
+radius = 6.0
+
+[node name="Parent" type="Area2D"]
+script = ExtResource("1_myudm")
+parent_sheets = Array[Texture]([ExtResource("2_tdmw3"), ExtResource("1_hh1rt")])
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_hh1rt")
+region_enabled = true
+region_rect = Rect2(32, 16, 16, 32)
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vavoc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

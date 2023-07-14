@@ -1,0 +1,167 @@
+[gd_scene load_steps=19 format=3 uid="uid://dse1gpvrukkky"]
+
+[ext_resource type="Texture2D" uid="uid://dybeotwdyn6tr" path="res://environment/workstation/station-textures/sofa.png" id="1_3tef7"]
+[ext_resource type="Script" path="res://environment/workstation/workstation.gd" id="1_38cow"]
+[ext_resource type="Texture2D" uid="uid://bof0y482e6w7t" path="res://environment/workstation/station-textures/fridge.png" id="1_g8lii"]
+[ext_resource type="Texture2D" uid="uid://vq8ywxix8ovp" path="res://environment/workstation/station-textures/cigarette-and-ashtray.png" id="1_h6iw7"]
+[ext_resource type="Texture2D" uid="uid://bmf6p0g85gvx2" path="res://environment/workstation/station-textures/doorway.png" id="1_nudqa"]
+[ext_resource type="Texture2D" uid="uid://ccl0nn413aqq2" path="res://environment/workstation/station-textures/television.png" id="1_vcemy"]
+[ext_resource type="PackedScene" uid="uid://mbcxaoay3brd" path="res://entities/parent/parent.tscn" id="2_35d72"]
+[ext_resource type="Texture2D" uid="uid://dohk3f3bs2gq" path="res://entities/parent/mom/mom-sheet.png" id="3_u3ucf"]
+[ext_resource type="Texture2D" uid="uid://erjgm140hdbj" path="res://entities/parent/dad/dad-sheet.png" id="7_p8b7g"]
+[ext_resource type="FontFile" uid="uid://boa8kkjrlk0hr" path="res://miscellaneous/Pixerif.ttf" id="8_ali45"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wh8rr"]
+height = 36.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0eiak"]
+height = 36.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dnylh"]
+radius = 12.0
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_icqah"]
+radius = 8.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4nqvx"]
+radius = 8.0
+height = 32.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xbjd"]
+bg_color = Color(1, 1, 1, 0.784314)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0, 0.0313726, 0.443137, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vhyw"]
+bg_color = Color(0, 0.0313726, 0.443137, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83wsa"]
+bg_color = Color(1, 0.54902, 0.360784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 4
+border_color = Color(0.388235, 1, 0.729412, 1)
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+anti_aliasing = false
+
+[node name="Workstation" type="Area2D"]
+priority = 2
+script = ExtResource("1_38cow")
+parent_scene = ExtResource("2_35d72")
+parent_sheets = Array[Texture]([ExtResource("3_u3ucf"), ExtResource("7_p8b7g")])
+workstation_textures = Array[Texture]([ExtResource("1_nudqa"), ExtResource("1_g8lii"), ExtResource("1_3tef7"), ExtResource("1_vcemy"), ExtResource("1_h6iw7")])
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture_filter = 1
+
+[node name="DoorwayHB" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_wh8rr")
+
+[node name="FridgeHB" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_0eiak")
+
+[node name="SofaHB" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dnylh")
+
+[node name="TVHB" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(3, 1)
+shape = SubResource("CapsuleShape2D_icqah")
+
+[node name="CigTrayHB" type="CollisionShape2D" parent="."]
+visible = false
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_4nqvx")
+
+[node name="InteractionPoints" type="Node2D" parent="."]
+
+[node name="EatOrDrink" type="Sprite2D" parent="InteractionPoints"]
+visible = false
+texture_filter = 1
+position = Vector2(8, 6)
+texture = ExtResource("7_p8b7g")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 48)
+
+[node name="Sleeping" type="Sprite2D" parent="InteractionPoints"]
+visible = false
+texture_filter = 1
+position = Vector2(-7, -2)
+texture = ExtResource("7_p8b7g")
+region_enabled = true
+region_rect = Rect2(0, 16, 32, 16)
+
+[node name="Watching" type="Sprite2D" parent="InteractionPoints"]
+visible = false
+texture_filter = 1
+position = Vector2(-12, -8)
+texture = ExtResource("7_p8b7g")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(64, 0, 16, 48)
+
+[node name="Smoking" type="Sprite2D" parent="InteractionPoints"]
+visible = false
+texture_filter = 1
+position = Vector2(20, 0)
+texture = ExtResource("7_p8b7g")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 48)
+
+[node name="Button" type="Button" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -9.0
+offset_right = 20.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(20, 9)
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.0313726, 0.443137, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.976471, 0.509804, 1)
+theme_override_fonts/font = ExtResource("8_ali45")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_1xbjd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0vhyw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_83wsa")
+text = "Work"
+
+[node name="ActionCooldown" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="ActionCooldown" to="." method="_on_action_cooldown_timeout"]
