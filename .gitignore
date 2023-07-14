@@ -1,0 +1,12 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Ignore .import files
+.import/
+*.import
+**/*.import
+**/**/*.import
+**/**/**/*.import
+
+export_presets.cfg
+
